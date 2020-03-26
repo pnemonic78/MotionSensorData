@@ -13,7 +13,7 @@
     <string name="unknown_g">\? G</string>
     <string name="unknown_radians_per_sec">\? rad/s</string>
     <string name="unknown_micro_tesla">\? uT</string>
-    <string name="value_g">%d G</string>
-    <string name="value_radians_per_sec">%d rad/s</string>
-    <string name="value_micro_tesla">%d uT</string>
+    <string name="value_g">%.3f G</string>
+    <string name="value_radians_per_sec">%.3f rad/s</string>
+    <string name="value_micro_tesla">%.3f uT</string>
 </resources>
