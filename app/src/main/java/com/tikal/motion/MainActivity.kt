@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
     protected lateinit var sensorManager: SensorManager
+    private val accelerometerData = FloatArray(3)
+    private val linearAccelerationData = FloatArray(3)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         monitor(Sensor.TYPE_ACCELEROMETER)
         monitor(Sensor.TYPE_GYROSCOPE)
+        monitor(Sensor.TYPE_LINEAR_ACCELERATION)
         monitor(Sensor.TYPE_MAGNETIC_FIELD)
     }
 
@@ -48,13 +51,24 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         when (event.sensor.type) {
             Sensor.TYPE_ACCELEROMETER -> {
+                System.arraycopy(data, 0, accelerometerData, 0, 3)
+
                 value_accelerometer_x.text = getString(R.string.value_g, data[0] / EARTH_GRAVITY)
                 value_accelerometer_y.text = getString(R.string.value_g, data[1] / EARTH_GRAVITY)
                 value_accelerometer_z.text = getString(R.string.value_g, data[2] / EARTH_GRAVITY)
 
-                value_motionGravity_x.text = getString(R.string.value_g, data[0] / EARTH_GRAVITY)
-                value_motionGravity_y.text = getString(R.string.value_g, data[1] / EARTH_GRAVITY)
-                value_motionGravity_z.text = getString(R.string.value_g, data[2] / EARTH_GRAVITY)
+                value_motionGravity_x.text = getString(
+                    R.string.value_g,
+                    (accelerometerData[0] + linearAccelerationData[0]) / EARTH_GRAVITY
+                )
+                value_motionGravity_y.text = getString(
+                    R.string.value_g,
+                    (accelerometerData[1] + linearAccelerationData[1]) / EARTH_GRAVITY
+                )
+                value_motionGravity_z.text = getString(
+                    R.string.value_g,
+                    (accelerometerData[2] + linearAccelerationData[2]) / EARTH_GRAVITY
+                )
             }
             Sensor.TYPE_GYROSCOPE -> {
                 value_gyroscope_x.text = getString(R.string.value_radians_per_sec, data[0])
@@ -64,6 +78,29 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 value_motionRotation_x.text = getString(R.string.value_radians_per_sec, data[0])
                 value_motionRotation_y.text = getString(R.string.value_radians_per_sec, data[1])
                 value_motionRotation_z.text = getString(R.string.value_radians_per_sec, data[2])
+            }
+            Sensor.TYPE_LINEAR_ACCELERATION -> {
+                System.arraycopy(data, 0, linearAccelerationData, 0, 3)
+
+                value_motionUserAcceleration_x.text =
+                    getString(R.string.value_g, data[0] / EARTH_GRAVITY)
+                value_motionUserAcceleration_y.text =
+                    getString(R.string.value_g, data[1] / EARTH_GRAVITY)
+                value_motionUserAcceleration_z.text =
+                    getString(R.string.value_g, data[2] / EARTH_GRAVITY)
+
+                value_motionGravity_x.text = getString(
+                    R.string.value_g,
+                    (accelerometerData[0] + linearAccelerationData[0]) / EARTH_GRAVITY
+                )
+                value_motionGravity_y.text = getString(
+                    R.string.value_g,
+                    (accelerometerData[1] + linearAccelerationData[1]) / EARTH_GRAVITY
+                )
+                value_motionGravity_z.text = getString(
+                    R.string.value_g,
+                    (accelerometerData[2] + linearAccelerationData[2]) / EARTH_GRAVITY
+                )
             }
             Sensor.TYPE_MAGNETIC_FIELD -> {
                 value_magnetometer_x.text = getString(R.string.value_micro_tesla, data[0])
