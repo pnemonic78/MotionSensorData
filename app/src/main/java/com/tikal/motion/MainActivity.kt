@@ -59,15 +59,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
                 value_motionGravity_x.text = getString(
                     R.string.value_g,
-                    (accelerometerData[0] + linearAccelerationData[0]) / EARTH_GRAVITY
+                    (accelerometerData[0] - linearAccelerationData[0]) / EARTH_GRAVITY
                 )
                 value_motionGravity_y.text = getString(
                     R.string.value_g,
-                    (accelerometerData[1] + linearAccelerationData[1]) / EARTH_GRAVITY
+                    (accelerometerData[1] - linearAccelerationData[1]) / EARTH_GRAVITY
                 )
                 value_motionGravity_z.text = getString(
                     R.string.value_g,
-                    (accelerometerData[2] + linearAccelerationData[2]) / EARTH_GRAVITY
+                    (accelerometerData[2] - linearAccelerationData[2]) / EARTH_GRAVITY
                 )
             }
             Sensor.TYPE_GYROSCOPE -> {
@@ -91,15 +91,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
                 value_motionGravity_x.text = getString(
                     R.string.value_g,
-                    (accelerometerData[0] + linearAccelerationData[0]) / EARTH_GRAVITY
+                    (accelerometerData[0] - linearAccelerationData[0]) / EARTH_GRAVITY
                 )
                 value_motionGravity_y.text = getString(
                     R.string.value_g,
-                    (accelerometerData[1] + linearAccelerationData[1]) / EARTH_GRAVITY
+                    (accelerometerData[1] - linearAccelerationData[1]) / EARTH_GRAVITY
                 )
                 value_motionGravity_z.text = getString(
                     R.string.value_g,
-                    (accelerometerData[2] + linearAccelerationData[2]) / EARTH_GRAVITY
+                    (accelerometerData[2] - linearAccelerationData[2]) / EARTH_GRAVITY
                 )
             }
             Sensor.TYPE_MAGNETIC_FIELD -> {
