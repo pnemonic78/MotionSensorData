@@ -6,6 +6,25 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="GroupRow">
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <style name="GroupLabel">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/category_bg</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ValueRow">
+        <item name="android:padding">2dp</item>
+    </style>
+
+    <style name="Label">
+        <item name="android:textColor">@color/label</item>
     </style>
 
 </resources>

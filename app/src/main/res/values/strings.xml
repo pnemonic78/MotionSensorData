@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Device Sensors Data</string>
+
+    <string name="group_userAcceleration">Device Motion User Acceleration Data</string>
+    <string name="group_gravity">Device Motion Gravity Data</string>
+    <string name="group_rotation_rate">Device Motion Rotation Rate</string>
+    <string name="group_accelerometer">Raw Accelerometer Data</string>
+    <string name="group_gyroscope">Raw Gyroscope Data</string>
+    <string name="group_magnetometer">Raw Magnetometer Data</string>
+    <string name="axis_x">Axis X:</string>
+    <string name="axis_y">Axis Y:</string>
+    <string name="axis_z">Axis Z:</string>
+    <string name="unknown_g">\? G</string>
+    <string name="unknown_radians_per_sec">\? rad/s</string>
+    <string name="unknown_micro_tesla">\? uT</string>
+    <string name="value_g">%d G</string>
+    <string name="value_radians_per_sec">%d rad/s</string>
+    <string name="value_micro_tesla">%d uT</string>
 </resources>
