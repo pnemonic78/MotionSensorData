@@ -1,0 +1,2 @@
+rootProject.name='Motion Sensor Data'
+include ':app'
