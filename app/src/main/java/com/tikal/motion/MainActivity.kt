@@ -29,10 +29,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         if (sensor != null) {
             sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI)
         }
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY)
-        if (sensor != null) {
-            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI)
-        }
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
         if (sensor != null) {
             sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI)
@@ -59,11 +55,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 value_accelerometer_x.text = getString(R.string.value_g, data[0] / EARTH_GRAVITY)
                 value_accelerometer_y.text = getString(R.string.value_g, data[1] / EARTH_GRAVITY)
                 value_accelerometer_z.text = getString(R.string.value_g, data[2] / EARTH_GRAVITY)
-            }
-            Sensor.TYPE_GRAVITY -> {
-                value_gravity_x.text = getString(R.string.value_g, data[0] / EARTH_GRAVITY)
-                value_gravity_y.text = getString(R.string.value_g, data[1] / EARTH_GRAVITY)
-                value_gravity_z.text = getString(R.string.value_g, data[2] / EARTH_GRAVITY)
+
+                value_motionGravity_x.text = getString(R.string.value_g, data[0] / EARTH_GRAVITY)
+                value_motionGravity_y.text = getString(R.string.value_g, data[1] / EARTH_GRAVITY)
+                value_motionGravity_z.text = getString(R.string.value_g, data[2] / EARTH_GRAVITY)
             }
             Sensor.TYPE_GYROSCOPE -> {
                 value_gyroscope_x.text = getString(R.string.value_g, data[0])
@@ -79,6 +74,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     companion object {
-        const val EARTH_GRAVITY = 9.81f
+        const val EARTH_GRAVITY = -9.81f
     }
 }
