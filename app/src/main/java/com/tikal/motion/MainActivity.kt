@@ -23,17 +23,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onStart() {
         super.onStart()
 
-        var sensor: Sensor?
+        monitor(Sensor.TYPE_ACCELEROMETER)
+        monitor(Sensor.TYPE_GYROSCOPE)
+        monitor(Sensor.TYPE_MAGNETIC_FIELD)
+    }
 
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        if (sensor != null) {
-            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI)
-        }
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
-        if (sensor != null) {
-            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI)
-        }
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+    private fun monitor(type: Int) {
+        val sensor = sensorManager.getDefaultSensor(type)
         if (sensor != null) {
             sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI)
         }
@@ -61,14 +57,18 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 value_motionGravity_z.text = getString(R.string.value_g, data[2] / EARTH_GRAVITY)
             }
             Sensor.TYPE_GYROSCOPE -> {
-                value_gyroscope_x.text = getString(R.string.value_g, data[0])
-                value_gyroscope_y.text = getString(R.string.value_g, data[1])
-                value_gyroscope_z.text = getString(R.string.value_g, data[2])
+                value_gyroscope_x.text = getString(R.string.value_radians_per_sec, data[0])
+                value_gyroscope_y.text = getString(R.string.value_radians_per_sec, data[1])
+                value_gyroscope_z.text = getString(R.string.value_radians_per_sec, data[2])
+
+                value_motionRotation_x.text = getString(R.string.value_radians_per_sec, data[0])
+                value_motionRotation_y.text = getString(R.string.value_radians_per_sec, data[1])
+                value_motionRotation_z.text = getString(R.string.value_radians_per_sec, data[2])
             }
             Sensor.TYPE_MAGNETIC_FIELD -> {
-                value_magnetometer_x.text = getString(R.string.value_g, data[0])
-                value_magnetometer_y.text = getString(R.string.value_g, data[1])
-                value_magnetometer_z.text = getString(R.string.value_g, data[2])
+                value_magnetometer_x.text = getString(R.string.value_micro_tesla, data[0])
+                value_magnetometer_y.text = getString(R.string.value_micro_tesla, data[1])
+                value_magnetometer_z.text = getString(R.string.value_micro_tesla, data[2])
             }
         }
     }
