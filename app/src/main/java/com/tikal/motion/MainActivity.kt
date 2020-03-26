@@ -1,4 +1,4 @@
-package com.tikal.motiondetection
+package com.tikal.motion
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -4,10 +4,9 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.tikal.motiondetection"
+        applicationId "com.tikal.motion_sensor_data"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
