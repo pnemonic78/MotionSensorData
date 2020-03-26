@@ -56,14 +56,14 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         when (event.sensor.type) {
             Sensor.TYPE_ACCELEROMETER -> {
-                value_accelerometer_x.text = getString(R.string.value_g, data[0])
-                value_accelerometer_y.text = getString(R.string.value_g, data[1])
-                value_accelerometer_z.text = getString(R.string.value_g, data[2])
+                value_accelerometer_x.text = getString(R.string.value_g, data[0] / earthGravity)
+                value_accelerometer_y.text = getString(R.string.value_g, data[1] / earthGravity)
+                value_accelerometer_z.text = getString(R.string.value_g, data[2] / earthGravity)
             }
             Sensor.TYPE_GRAVITY -> {
-                value_gravity_x.text = getString(R.string.value_g, data[0])
-                value_gravity_y.text = getString(R.string.value_g, data[1])
-                value_gravity_z.text = getString(R.string.value_g, data[2])
+                value_gravity_x.text = getString(R.string.value_g, data[0] / earthGravity)
+                value_gravity_y.text = getString(R.string.value_g, data[1] / earthGravity)
+                value_gravity_z.text = getString(R.string.value_g, data[2] / earthGravity)
             }
             Sensor.TYPE_GYROSCOPE -> {
                 value_gyroscope_x.text = getString(R.string.value_g, data[0])
@@ -76,5 +76,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 value_magnetometer_z.text = getString(R.string.value_g, data[2])
             }
         }
+    }
+
+    companion object {
+        const val earthGravity = 9.81f
     }
 }
